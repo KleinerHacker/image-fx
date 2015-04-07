@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pcsoft.tools.image_fx.ui.components.controller.ImagePreviewController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="210.0">
+         <top>
+            <Label fx:id="lblTitle" style="-fx-font-weight: bold;" text="Effect Title" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <Pagination fx:id="pgnImages" maxPageIndicatorCount="1" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </BorderPane.margin>
+            </Pagination>
+         </center>
+         <bottom>
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onPrepare" text="..." BorderPane.alignment="CENTER" />
+         </bottom>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </BorderPane>
+      <BorderPane fx:id="pnlWait" opacity="0.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.7);" visible="false">
+         <center>
+            <ProgressIndicator maxHeight="150.0" maxWidth="150.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>

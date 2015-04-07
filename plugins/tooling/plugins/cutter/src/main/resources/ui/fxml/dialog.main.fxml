@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pcsoft.tools.image_fx.plugins.tooling.plugins.cutter.ui.dialogs.controllers.MainDialogController">
+   <right>
+      <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" text="Options" BorderPane.alignment="CENTER">
+         <content>
+            <VBox>
+               <children>
+                  <Label text="Parts on X:" />
+                  <Slider fx:id="sldPartX" blockIncrement="5.0" majorTickUnit="24.0" max="99.0" min="2.0" minorTickCount="1" prefWidth="250.0" showTickLabels="true" showTickMarks="true" value="2.0">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Slider>
+                  <Label text="Parts on Y:">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Slider fx:id="sldPartY" blockIncrement="5.0" majorTickUnit="24.0" max="99.0" min="2.0" minorTickCount="1" prefWidth="250.0" showTickLabels="true" showTickMarks="true" value="2.0">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Slider>
+               </children>
+            </VBox>
+         </content>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" />
+         </BorderPane.margin>
+      </TitledPane>
+   </right>
+   <bottom>
+      <Separator BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets top="5.0" />
+         </BorderPane.margin>
+      </Separator>
+   </bottom>
+</BorderPane>

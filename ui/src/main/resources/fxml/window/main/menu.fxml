@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.CheckMenuItem?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pcsoft.tools.image_fx.ui.windows.controllers.MainWindowMenuController">
+    <children>
+        <MenuBar>
+            <menus>
+                <Menu text="_File">
+                    <items>
+                        <Menu text="_New">
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="icons/new16.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <items>
+                                <MenuItem onAction="#onActionNewEmpty" text="_Empty Image...">
+                                    <graphic>
+                                        <ImageView>
+                                            <image>
+                                                <Image url="icons/new_empty16.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <accelerator>
+                                        <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                    </accelerator>
+                                </MenuItem>
+                                <MenuItem onAction="#onActionNewFromClipboard" text="From _Clipboard">
+                                    <graphic>
+                                        <ImageView>
+                                            <image>
+                                                <Image url="icons/paste16.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <accelerator>
+                                        <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                                    </accelerator>
+                                </MenuItem>
+                                <SeparatorMenuItem mnemonicParsing="false" />
+                                <MenuItem onAction="#onActionNewFromRenderer" text="From _Renderer...">
+                                    <graphic>
+                                        <ImageView>
+                                            <image>
+                                                <Image url="icons/new_renderer16.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <accelerator>
+                                        <KeyCodeCombination alt="UP" code="R" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                                    </accelerator>
+                                </MenuItem>
+                            </items>
+                        </Menu>
+                        <MenuItem onAction="#onActionOpen" text="_Open...">
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="icons/open16.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <Menu fx:id="mnuReopen" text="_Reopen" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="miSave" onAction="#onActionSave" text="_Save">
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="icons/save16.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <MenuItem fx:id="miSaveAs" onAction="#onActionSaveAs" text="Save _as...">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem onAction="#onActionClose" text="_Close" />
+                    </items>
+                </Menu>
+                <Menu text="_Edit">
+                    <items>
+                        <MenuItem fx:id="miUndo" onAction="#onActionUndo" text="_Undo">
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="icons/undo16.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="Z" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <MenuItem fx:id="miRedo" onAction="#onActionRedo" text="_Redo">
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="icons/redo16.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="Y" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="miCopy" onAction="#onActionCopy" text="_Copy to clipboard">
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="icons/copy16.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="C" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                    </items>
+                </Menu>
+                <Menu fx:id="mnuMask" text="_Mask">
+                    <items>
+                        <Menu text="From _Height Map">
+                            <items>
+                                <MenuItem fx:id="miMaskFromHeightMapLoad" onAction="#onActionLoadMaskFromHeightMap" text="_Load from Height Map...">
+                                    <graphic>
+                                        <ImageView>
+                                            <image>
+                                                <Image url="icons/open16.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <accelerator>
+                                        <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                                    </accelerator>
+                                </MenuItem>
+                                <MenuItem fx:id="miMaskToHeightMapSave" onAction="#onActionSaveMaskToHeightMap" text="_Save to Height-Map...">
+                                    <graphic>
+                                        <ImageView>
+                                            <image>
+                                                <Image url="icons/save16.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <accelerator>
+                                        <KeyCodeCombination alt="DOWN" code="S" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                                    </accelerator>
+                                </MenuItem>
+                                <SeparatorMenuItem />
+                                <Menu fx:id="mnuMaskFromHeightMapReopen" text="Last Loaded _Files" />
+                            </items>
+                        </Menu>
+                        <MenuItem fx:id="miMaskFromClipboard" onAction="#onActionMaskFromClipboard" text="From _Clipboard">
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="icons/paste16.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="V" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <MenuItem fx:id="miMaskFromStamp" onAction="#onActionMaskFromStamp" text="From _Stamp...">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="miMaskRotateLeft" onAction="#onActionMaskRotateLeft" text="Rotate Mask _Left">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="LEFT" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator></MenuItem>
+                        <MenuItem fx:id="miMaskRotateRight" onAction="#onActionMaskRotateRight" text="Rotate Mask _Right">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="RIGHT" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator></MenuItem>
+                        <MenuItem fx:id="miMaskMirrorHorizontal" onAction="#onActionMaskMirrorHorizontal" text="Mirror Mask In Hori_zontal">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="NUMPAD6" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator></MenuItem>
+                        <MenuItem fx:id="miMaskMirrorVertical" onAction="#onActionMaskMirrorVertical" text="Mirror Mask In _Vertical">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="NUMPAD8" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator></MenuItem>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="miInvertMask" onAction="#onActionInvertMask" text="_Invert Mask" />
+                        <MenuItem fx:id="miSplitMaskSpectrum" onAction="#onActionSplitMaskSpectrum" text="S_plit Mask Spectrum" />
+                        <MenuItem fx:id="miBlurMask" onAction="#onActionBlurMask" text="_Blur Mask" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="miClearMask" onAction="#onActionClearMask" text="Cl_ear Mask">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="X" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem onAction="#onActionSetupMaskColor" text="Setup Mask C_olor..." />
+                        <CheckMenuItem fx:id="miShowMask" selected="true" text="Show _Mask">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="M" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                            </accelerator>
+                        </CheckMenuItem>
+                    </items>
+                </Menu>
+                <Menu fx:id="mnuImage" text="_Image">
+                    <items>
+                        <MenuItem onAction="#onActionImageInformation" text="_Information..." />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem onAction="#onActionImageRotateLeft" text="Rotate _Left">
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="icons/rot_left16.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="LEFT" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <MenuItem onAction="#onActionImageRotateRight" text="Rotate _Right">
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="icons/rot_right16.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="RIGHT" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <MenuItem onAction="#onActionImageRotateExact" text="Rotate _exact..." />
+                        <MenuItem onAction="#onActionImageMirrorHorizontal" text="Mirror _Horizontal">
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="icons/mir_hor16.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="NUMPAD6" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <MenuItem onAction="#onActionImageMirrorVertical" text="Mirror _Vertical">
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="icons/mir_vert16.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="NUMPAD8" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem onAction="#onActionImageInvert" text="I_nvert image"/>
+                        <MenuItem onAction="#onActionImageGrayscale" text="_Gray scale image"/>
+                        <MenuItem onAction="#onActionImageBlackWhite" text="_Black-White image"/>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem onAction="#onActionImageChangeDimension" text="Change Image _Dimension..." />
+                        <MenuItem onAction="#onActionImageChangeColorDepth" text="Change _Color Depth..." />
+                    </items>
+                </Menu>
+                <Menu fx:id="mnuTools" text="_Tools" />
+                <Menu text="E_xtras">
+                    <items>
+                        <Menu text="_Scripts">
+                            <items>
+                                <MenuItem onAction="#onActionScriptManager" text="Open _Script Manager...">
+                                    <accelerator>
+                                        <KeyCodeCombination alt="DOWN" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                                    </accelerator>
+                                </MenuItem>
+                                <MenuItem onAction="#onActionScriptGroupManager" text="Open Script _Layer Manager...">
+                                    <accelerator>
+                                        <KeyCodeCombination alt="DOWN" code="L" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                                    </accelerator>
+                                </MenuItem>
+                            </items>
+                        </Menu>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <ToolBar prefHeight="40.0" prefWidth="200.0">
+            <items>
+                <Button onAction="#onActionNewEmpty">
+                    <tooltip>
+                        <Tooltip text="New Empty Image" />
+                    </tooltip>
+                    <graphic>
+                        <ImageView>
+                            <image>
+                                <Image url="icons/new_empty16.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button onAction="#onActionNewFromRenderer">
+                    <tooltip>
+                        <Tooltip text="New Image From Renderer" />
+                    </tooltip>
+                    <graphic>
+                        <ImageView>
+                            <image>
+                                <Image url="icons/new_renderer16.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button onAction="#onActionOpen">
+                    <tooltip>
+                        <Tooltip text="Open" />
+                    </tooltip>
+                    <graphic>
+                        <ImageView>
+                            <image>
+                                <Image url="icons/open16.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button disable="${miSave.disable}" onAction="#onActionSave">
+                    <tooltip>
+                        <Tooltip text="Save" />
+                    </tooltip>
+                    <graphic>
+                        <ImageView>
+                            <image>
+                                <Image url="icons/save16.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Separator />
+                <Button fx:id="btnUndo" disable="${miUndo.disable}" onAction="#onActionUndo">
+                    <graphic>
+                        <ImageView>
+                            <image>
+                                <Image url="icons/undo16.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnRedo" disable="${miRedo.disable}" onAction="#onActionRedo">
+                    <graphic>
+                        <ImageView>
+                            <image>
+                                <Image url="icons/redo16.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Separator />
+                <Button disable="${miCopy.disable}" onAction="#onActionCopy">
+                    <tooltip>
+                        <Tooltip text="Copy to Clipboard" />
+                    </tooltip>
+                    <graphic>
+                        <ImageView>
+                            <image>
+                                <Image url="icons/copy16.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Separator />
+                <Button disable="${mnuImage.disable}" onAction="#onActionImageRotateLeft">
+                    <tooltip>
+                        <Tooltip text="Rotate Left" />
+                    </tooltip>
+                    <graphic>
+                        <ImageView>
+                            <image>
+                                <Image url="icons/rot_left16.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button disable="${mnuImage.disable}" onAction="#onActionImageRotateRight">
+                    <tooltip>
+                        <Tooltip text="Rotate Right" />
+                    </tooltip>
+                    <graphic>
+                        <ImageView>
+                            <image>
+                                <Image url="icons/rot_right16.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button disable="${mnuImage.disable}" onAction="#onActionImageMirrorHorizontal">
+                    <tooltip>
+                        <Tooltip text="Mirror Horizontal" />
+                    </tooltip>
+                    <graphic>
+                        <ImageView>
+                            <image>
+                                <Image url="icons/mir_hor16.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button disable="${mnuImage.disable}" onAction="#onActionImageMirrorVertical">
+                    <tooltip>
+                        <Tooltip text="Mirror Vertical" />
+                    </tooltip>
+                    <graphic>
+                        <ImageView>
+                            <image>
+                                <Image url="icons/mir_vert16.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </items>
+        </ToolBar>
+    </children>
+</VBox>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="320.0" minWidth="480.0" prefHeight="1024.0" prefWidth="1460.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pcsoft.tools.image_fx.ui.windows.controllers.MainWindowController">
+    <top>
+        <fx:include fx:id="menu" source="window/main/menu.fxml" BorderPane.alignment="CENTER" />
+    </top>
+    <bottom>
+        <fx:include fx:id="statusBar" source="window/main/status_bar.fxml" BorderPane.alignment="CENTER" />
+    </bottom>
+    <right>
+        <TabPane prefWidth="260.0" side="RIGHT" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="20.0" tabMaxWidth="100.0" tabMinHeight="20.0" tabMinWidth="100.0">
+            <tabs>
+                <Tab closable="false" text="Scripts">
+                    <content>
+                        <Accordion prefWidth="250.0" BorderPane.alignment="CENTER">
+                            <panes>
+                                <TitledPane prefHeight="200.0" prefWidth="200.0" text="Effects">
+                                    <content>
+                                        <Accordion fx:id="accEffects">
+                                            <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                            </padding>
+                                        </Accordion>
+                                    </content>
+                                </TitledPane>
+                                <TitledPane prefHeight="200.0" prefWidth="200.0" text="Renderers">
+                                    <content>
+                                        <Accordion fx:id="accRenderers">
+                                            <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                            </padding>
+                                        </Accordion>
+                                    </content>
+                                </TitledPane>
+                            </panes>
+                        </Accordion>
+                    </content>
+                </Tab>
+                <Tab text="Layers">
+                    <content>
+                        <Accordion fx:id="accLayers" prefWidth="250.0" />
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </right>
+    <center>
+        <StackPane>
+            <children>
+                <VBox>
+                    <children>
+                        <ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER" VBox.vgrow="ALWAYS">
+                            <content>
+                                <StackPane>
+                                    <children>
+                                        <ImageView fx:id="imgPicture" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                        <ImageView fx:id="imgMask" fitHeight="150.0" fitWidth="200.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" />
+                                    </children>
+                                </StackPane>
+                            </content>
+                        </ScrollPane>
+                        <HBox>
+                            <children>
+                                <TitledPane fx:id="tpMask" animated="false" collapsible="false" text="Mask (Viewing only)">
+                                    <content>
+                                        <FlowPane prefWidth="400.0">
+                                            <children>
+                                                <Label text="Mask Opacity:">
+                                                    <FlowPane.margin>
+                                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                    </FlowPane.margin>
+                                                </Label>
+                                                <Slider fx:id="sldMaskOpacity" blockIncrement="0.1" max="1.0" min="0.1" value="0.5">
+                                                    <FlowPane.margin>
+                                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                    </FlowPane.margin>
+                                                </Slider>
+                                                <Label fx:id="lblMaskOpacity" prefWidth="40.0" text="50%" />
+                                                <CheckBox fx:id="ckbShowMask" mnemonicParsing="false" selected="true" text="Show Mask">
+                                                    <FlowPane.margin>
+                                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                    </FlowPane.margin>
+                                                </CheckBox>
+                                            </children>
+                                        </FlowPane>
+                                    </content>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" top="5.0" />
+                           </HBox.margin>
+                                </TitledPane>
+                                <TitledPane fx:id="tpOpacity" animated="false" collapsible="false" maxHeight="1.7976931348623157E308" text="Opacity">
+                                    <content>
+                                        <FlowPane prefWidth="225.0">
+                                            <children>
+                                                <Slider fx:id="sldOpacity" max="1.0" value="1.0">
+                                                    <FlowPane.margin>
+                                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                    </FlowPane.margin>
+                                                </Slider>
+                                                <Label fx:id="lblOpacity" prefWidth="40.0" text="100%" />
+                                            </children>
+                                        </FlowPane>
+                                    </content>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" top="5.0" />
+                           </HBox.margin>
+                                </TitledPane>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <fx:include fx:id="worker" source="window/main/worker.fxml" />
+            </children>
+        </StackPane>
+    </center>
+</BorderPane>

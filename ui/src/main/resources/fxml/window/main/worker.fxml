@@ -1,0 +1,10 @@
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pcsoft.tools.image_fx.ui.windows.controllers.MainWindowWorkerController"
+            fx:id="pnlWait" mouseTransparent="true" opacity="0.0" style="-fx-background-color: rgba(1,1,1,0.5);">
+    <center>
+        <ProgressIndicator fx:id="pbWait" maxHeight="-Infinity" maxWidth="-Infinity"
+                           minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0"
+                           prefWidth="100.0" progress="0.0" BorderPane.alignment="CENTER"/>
+    </center>
+</BorderPane>

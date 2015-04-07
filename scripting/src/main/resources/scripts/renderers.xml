@@ -1,0 +1,69 @@
+<fxr:Renderers xmlns:fxr="http://www.pcsoft.de/image.fx/renderers" xmlns:fxs="http://www.pcsoft.de/image.fx/scripting"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ScriptGroup id="default" name="Default">
+        <ScriptElement id="snow" name="Snow">
+            <Script>
+                <JavaScriptFile>js/renderers/default.snow.js</JavaScriptFile>
+            </Script>
+            <ScriptParameterDefinition>
+                <ParameterDefinition xsi:type="fxs:XBooleanParameterDefinition" id="colored" name="Colored"/>
+            </ScriptParameterDefinition>
+        </ScriptElement>
+        <ScriptElement id="rainbow" name="Rainbow">
+            <Script>
+                <JavaScriptFile>js/renderers/default.rainbow.js</JavaScriptFile>
+            </Script>
+            <ScriptParameterDefinition>
+                <ParameterGroup id="color-shifting" name="Color Shifting">
+                    <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="shiftRed" name="Shift Red" max="10"/>
+                    <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="shiftGreen" name="Shift Green"
+                                         max="10"/>
+                    <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="shiftBlue" name="Shift Blue"
+                                         max="10"/>
+                </ParameterGroup>
+                <ParameterGroup id="wave-algorithm" name="Wave Algorithm">
+                    <ParameterDefinition xsi:type="fxs:XStringParameterDefinition" id="redFunction" name="Function Red">
+                        <Value name="Sinus">sin</Value>
+                        <Value name="Cosinus">cos</Value>
+                    </ParameterDefinition>
+                    <ParameterDefinition xsi:type="fxs:XStringParameterDefinition" id="greenFunction" name="Function Green">
+                        <Value name="Sinus">sin</Value>
+                        <Value name="Cosinus">cos</Value>
+                    </ParameterDefinition>
+                    <ParameterDefinition xsi:type="fxs:XStringParameterDefinition" id="blueFunction" name="Function Blue">
+                        <Value name="Sinus">sin</Value>
+                        <Value name="Cosinus">cos</Value>
+                    </ParameterDefinition>
+                </ParameterGroup>
+            </ScriptParameterDefinition>
+        </ScriptElement>
+    </ScriptGroup>
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <ScriptGroup id="functions" name="Functions">
+        <ScriptElement id="pow" name="Pow-Function">
+            <Script>
+                <JavaScriptFile>js/renderers/functions.pow.js</JavaScriptFile>
+            </Script>
+            <ScriptParameterDefinition>
+                <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="exp" name="Exponent" min="0.001" max="10"/>
+                <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="interpolator" name="Interpolator" min="0.001" max="1"/>
+                <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="factor" name="Factor" min="0.001" max="1"/>
+                <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="tolerance" name="Tolerance" min="0" max="1"/>
+                <ParameterDefinition xsi:type="fxs:XStringParameterDefinition" id="type" name="Type of Base">
+                    <Value name="X only">x</Value>
+                    <Value name="Y only">y</Value>
+                    <Value name="X*Y">x*y</Value>
+                    <Value name="X+Y">x+y</Value>
+                    <Value name="X-Y">x-y</Value>
+                    <Value name="X/Y">x/y</Value>
+                </ParameterDefinition>
+                <ParameterGroup id="color" name="Color">
+                    <ParameterDefinition xsi:type="fxs:XColorParameterDefinition" id="lightColor" name="Light Color"/>
+                    <ParameterDefinition xsi:type="fxs:XColorParameterDefinition" id="darkColor" name="Dark Color"/>
+                </ParameterGroup>
+            </ScriptParameterDefinition>
+        </ScriptElement>
+    </ScriptGroup>
+</fxr:Renderers>

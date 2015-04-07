@@ -1,0 +1,68 @@
+<var:Variants xmlns:var="http://www.pcsoft.de/image.fx/variants">
+    <ScriptVariants group-ref="default" script-ref="snow">
+        <Variant id="not-colored" name="No Colors">
+            <ParameterReference ref="colored">false</ParameterReference>
+        </Variant>
+        <Variant id="colored" name="Colored">
+            <ParameterReference ref="colored">true</ParameterReference>
+        </Variant>
+    </ScriptVariants>
+    <ScriptVariants group-ref="default" script-ref="rainbow">
+        <Variant id="simple" name="Simple Blue Rainbow">
+            <ParameterReference ref="shiftRed">1</ParameterReference>
+            <ParameterReference ref="shiftGreen">0.5</ParameterReference>
+            <ParameterReference ref="shiftBlue">0.1</ParameterReference>
+            <ParameterReference ref="redFunction">sin</ParameterReference>
+            <ParameterReference ref="greenFunction">sin</ParameterReference>
+            <ParameterReference ref="blueFunction">cos</ParameterReference>
+        </Variant>
+        <Variant id="small" name="Small Rainbow">
+            <ParameterReference ref="shiftRed">7</ParameterReference>
+            <ParameterReference ref="shiftGreen">0.1</ParameterReference>
+            <ParameterReference ref="shiftBlue">3.45</ParameterReference>
+            <ParameterReference ref="redFunction">sin</ParameterReference>
+            <ParameterReference ref="greenFunction">sin</ParameterReference>
+            <ParameterReference ref="blueFunction">sin</ParameterReference>
+        </Variant>
+        <Variant id="normal" name="Normal Rainbow">
+            <ParameterReference ref="shiftRed">3.55</ParameterReference>
+            <ParameterReference ref="shiftGreen">2.98</ParameterReference>
+            <ParameterReference ref="shiftBlue">0.56</ParameterReference>
+            <ParameterReference ref="redFunction">cos</ParameterReference>
+            <ParameterReference ref="greenFunction">cos</ParameterReference>
+            <ParameterReference ref="blueFunction">cos</ParameterReference>
+        </Variant>
+    </ScriptVariants>
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <ScriptVariants group-ref="functions" script-ref="pow">
+        <Variant id="default" name="Default" default="true" sort-id="1">
+            <ParameterReference ref="exp">2</ParameterReference>
+            <ParameterReference ref="interpolator">0.1</ParameterReference>
+            <ParameterReference ref="factor">0.01</ParameterReference>
+            <ParameterReference ref="tolerance">0.01</ParameterReference>
+            <ParameterReference ref="type">x</ParameterReference>
+            <ParameterReference ref="lightColor">#FFFFFF</ParameterReference>
+            <ParameterReference ref="darkColor">#000000</ParameterReference>
+        </Variant>
+        <Variant id="xy_mul" name="X*Y">
+            <ParameterReference ref="exp">2</ParameterReference>
+            <ParameterReference ref="interpolator">0.1</ParameterReference>
+            <ParameterReference ref="factor">0.01</ParameterReference>
+            <ParameterReference ref="tolerance">0.01</ParameterReference>
+            <ParameterReference ref="type">x*y</ParameterReference>
+            <ParameterReference ref="lightColor">#FFFFFF</ParameterReference>
+            <ParameterReference ref="darkColor">#000000</ParameterReference>
+        </Variant>
+        <Variant id="xy_div" name="X/Y">
+            <ParameterReference ref="exp">2</ParameterReference>
+            <ParameterReference ref="interpolator">0.1</ParameterReference>
+            <ParameterReference ref="factor">0.01</ParameterReference>
+            <ParameterReference ref="tolerance">0.01</ParameterReference>
+            <ParameterReference ref="type">x/y</ParameterReference>
+            <ParameterReference ref="lightColor">#FFFFFF</ParameterReference>
+            <ParameterReference ref="darkColor">#000000</ParameterReference>
+        </Variant>
+    </ScriptVariants>
+</var:Variants>

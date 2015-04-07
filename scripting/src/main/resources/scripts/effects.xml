@@ -1,0 +1,192 @@
+<fxe:Effects xmlns:fxe="http://www.pcsoft.de/image.fx/effects" xmlns:fxs="http://www.pcsoft.de/image.fx/scripting"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ScriptGroup id="default" name="Default">
+        <ScriptElement id="grayscale" name="Grayscale for Color">
+            <Script>
+                <JavaScriptFile>js/effects/default.grayscale.js</JavaScriptFile>
+            </Script>
+            <ScriptParameterDefinition>
+                <ParameterDefinition xsi:type="fxs:XColorParameterDefinition" id="filterColor" name="Filter Color"/>
+            </ScriptParameterDefinition>
+        </ScriptElement>
+        <ScriptElement id="black-white" name="Back &amp; White colored">
+            <Script>
+                <JavaScriptFile>js/effects/default.black-white.js</JavaScriptFile>
+            </Script>
+            <ScriptParameterDefinition>
+                <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="factor" name="Factor" max="1"/>
+                <ParameterDefinition xsi:type="fxs:XColorParameterDefinition" id="colorDark" name="Dark Color"/>
+                <ParameterDefinition xsi:type="fxs:XColorParameterDefinition" id="colorBright" name="Bright Color"/>
+            </ScriptParameterDefinition>
+        </ScriptElement>
+        <ScriptElement id="monochrome" name="Monochrome">
+            <Script>
+                <JavaScriptFile>js/effects/default.monochrome.js</JavaScriptFile>
+            </Script>
+            <ScriptParameterDefinition>
+                <ParameterDefinition xsi:type="fxs:XColorParameterDefinition" id="filterColor" name="Filter Color"/>
+            </ScriptParameterDefinition>
+        </ScriptElement>
+    </ScriptGroup>
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <ScriptGroup id="lighting" name="Lighting">
+        <ScriptElement id="default" name="Lighting">
+            <Script>
+                <JavaScriptFile>js/effects/lighting.default.js</JavaScriptFile>
+            </Script>
+            <ScriptParameterDefinition>
+                <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="factor" name="Factor" max="10"/>
+            </ScriptParameterDefinition>
+        </ScriptElement>
+        <ScriptElement id="calculated" name="Calculated Lighting">
+            <Script>
+                <JavaScriptFile>js/effects/lighting.calculated.js</JavaScriptFile>
+            </Script>
+            <ScriptParameterDefinition>
+                <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="brightFactor"
+                                     name="Brightness Factor" max="3"/>
+                <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="darkFactor" name="Darkness Factor"
+                                     max="3"/>
+                <ParameterDefinition xsi:type="fxs:XStringParameterDefinition" id="calculation" name="Calculation Type">
+                    <Value name="Multiply">mul</Value>
+                    <Value name="Divide">div</Value>
+                    <Value name="Add">add</Value>
+                    <Value name="Subtract">sub</Value>
+                </ParameterDefinition>
+            </ScriptParameterDefinition>
+        </ScriptElement>
+    </ScriptGroup>
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <ScriptGroup id="coloring" name="Coloring">
+        <ScriptElement id="overlay" name="Color Overlay">
+            <Script>
+                <JavaScriptFile>js/effects/coloring.overlay.js</JavaScriptFile>
+            </Script>
+            <ScriptParameterDefinition>
+                <ParameterDefinition xsi:type="fxs:XColorParameterDefinition" id="addColor" name="Additional Color"/>
+                <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="opacity" name="Opacity" max="1"/>
+            </ScriptParameterDefinition>
+        </ScriptElement>
+        <ScriptElement id="replacement" name="Color Replacement">
+            <Script>
+                <JavaScriptFile>js/effects/coloring.replacement.js</JavaScriptFile>
+            </Script>
+            <ScriptParameterDefinition>
+                <ParameterDefinition xsi:type="fxs:XColorParameterDefinition" id="sourceColor" name="Source Color"/>
+                <ParameterDefinition xsi:type="fxs:XColorParameterDefinition" id="targetColor" name="Target Color"/>
+                <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="factor" name="Relative Factor"
+                                     max="1"/>
+                <ParameterDefinition xsi:type="fxs:XBooleanParameterDefinition" id="smoothly" name="Smoothly Color"/>
+            </ScriptParameterDefinition>
+        </ScriptElement>
+        <ScriptElement id="palette" name="Color Palette Shifting">
+            <Script>
+                <JavaScriptFile>js/effects/coloring.palette.js</JavaScriptFile>
+            </Script>
+            <ScriptParameterDefinition>
+                <ParameterDefinition xsi:type="fxs:XStringParameterDefinition" id="palette" name="Palette Type">
+                    <Value name="Blue-Green-Red">BGR</Value>
+                    <Value name="Red-Blue-Green">RBG</Value>
+                    <Value name="Blue-Red-Green">BRG</Value>
+                    <Value name="Green-Blue-Red">GBR</Value>
+                    <Value name="Green-Red-Blue">GRB</Value>
+                </ParameterDefinition>
+            </ScriptParameterDefinition>
+        </ScriptElement>
+        <ScriptElement id="shifting" name="Color Shifting">
+            <Script>
+                <JavaScriptFile>js/effects/coloring.shifting.js</JavaScriptFile>
+            </Script>
+            <ScriptParameterDefinition>
+                <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="shiftFactor" name="Shifting Factor"
+                                     min="0" max="0.5"/>
+                <ParameterDefinition xsi:type="fxs:XColorParameterDefinition" id="channelColor" name="Channel Color"/>
+            </ScriptParameterDefinition>
+        </ScriptElement>
+    </ScriptGroup>
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <ScriptGroup id="smoothly" name="Smoothly">
+        <ScriptElement id="blur.default" name="Blur">
+            <Script>
+                <JavaScriptFile>js/effects/smoothly.blur.default.js</JavaScriptFile>
+            </Script>
+            <ScriptParameterDefinition>
+                <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="factor" name="Factor" min="0.001"
+                                     max="0.1"/>
+                <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="interpolator" name="Interpolator"
+                                     min="0.1" max="1"/>
+            </ScriptParameterDefinition>
+        </ScriptElement>
+        <ScriptElement id="blur.zoom" name="Blur Zoom">
+            <Script>
+                <JavaScriptFile>js/effects/smoothly.blur.zoom.js</JavaScriptFile>
+            </Script>
+            <ScriptParameterDefinition>
+                <ParameterDefinition xsi:type="fxs:XImagePositionParameterDefinition" id="center" name="Blur Center"/>
+                <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="blurAmount" name="Blur Amount"
+                                     min="-1" max="1"/>
+                <ParameterGroup id="expert" name="Expert">
+                    <ParameterDefinition xsi:type="fxs:XIntegerParameterDefinition" id="repeatCount" name="Repeating"
+                                         min="5" max="25"/>
+                    <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="repeatMinus"
+                                         name="Minus of Repeating Count" min="0.01" max="0.9"/>
+                </ParameterGroup>
+            </ScriptParameterDefinition>
+        </ScriptElement>
+    </ScriptGroup>
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <ScriptGroup id="border" name="Border">
+        <ScriptElement id="relief" name="Relief">
+            <Script>
+                <JavaScriptFile>js/effects/border.relief.js</JavaScriptFile>
+            </Script>
+            <ScriptParameterDefinition>
+                <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="size" name="Border Size" min="0"
+                                     max="0.03"/>
+                <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="interpolator" name="Interpolator"
+                                     min="0.1" max="5"/>
+                <ParameterDefinition xsi:type="fxs:XBooleanParameterDefinition" id="gray" name="Gray-Scale Only"/>
+            </ScriptParameterDefinition>
+        </ScriptElement>
+    </ScriptGroup>
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <ScriptGroup id="deformation" name="Deformation">
+        <ScriptElement id="pixeling" name="Pixeling">
+            <Script>
+                <JavaScript><![CDATA[
+                    return pixelReader.getColor(x - (x % transX), y - (y % transY));
+            ]]></JavaScript>
+            </Script>
+            <ScriptParameterDefinition>
+                <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="transX" name="Pixel Size X"
+                                     min="0.001" max="0.5"/>
+                <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="transY" name="Pixel Size Y"
+                                     min="0.001" max="0.5"/>
+            </ScriptParameterDefinition>
+        </ScriptElement>
+    </ScriptGroup>
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <ScriptGroup id="art" name="Artistic">
+        <ScriptElement id="toon" name="Toon Effect">
+            <Script>
+                <JavaScriptFile>js/effects/art.toon.js</JavaScriptFile>
+            </Script>
+            <ScriptParameterDefinition>
+                <ParameterDefinition xsi:type="fxs:XDoubleParameterDefinition" id="factor" name="Factor" min="1"
+                                     max="20"/>
+            </ScriptParameterDefinition>
+        </ScriptElement>
+    </ScriptGroup>
+</fxe:Effects>

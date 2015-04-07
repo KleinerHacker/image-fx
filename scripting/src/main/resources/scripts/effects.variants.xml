@@ -1,0 +1,225 @@
+<var:Variants xmlns:var="http://www.pcsoft.de/image.fx/variants">
+    <ScriptVariants group-ref="default" script-ref="grayscale">
+        <Variant id="default" name="Default" default="true" sort-id="1">
+            <ParameterReference ref="filterColor">#FFFFFF</ParameterReference>
+        </Variant>
+        <Variant id="red" name="Red">
+            <ParameterReference ref="filterColor">#FF0000</ParameterReference>
+        </Variant>
+        <Variant id="green" name="Green">
+            <ParameterReference ref="filterColor">#00FF00</ParameterReference>
+        </Variant>
+        <Variant id="blue" name="Blue">
+            <ParameterReference ref="filterColor">#0000FF</ParameterReference>
+        </Variant>
+    </ScriptVariants>
+    <ScriptVariants group-ref="default" script-ref="black-white">
+        <Variant id="default" name="Default" default="true">
+            <ParameterReference ref="factor">0.5</ParameterReference>
+            <ParameterReference ref="colorDark">#000000</ParameterReference>
+            <ParameterReference ref="colorBright">#FFFFFF</ParameterReference>
+        </Variant>
+        <Variant id="red-blue" name="Red-Blue">
+            <ParameterReference ref="factor">0.3</ParameterReference>
+            <ParameterReference ref="colorDark">#0000FF</ParameterReference>
+            <ParameterReference ref="colorBright">#FF0000</ParameterReference>
+        </Variant>
+        <Variant id="green-yellow" name="Green-Yellow">
+            <ParameterReference ref="factor">0.7</ParameterReference>
+            <ParameterReference ref="colorDark">#008000</ParameterReference>
+            <ParameterReference ref="colorBright">#FFFF00</ParameterReference>
+        </Variant>
+    </ScriptVariants>
+    <ScriptVariants group-ref="default" script-ref="monochrome">
+        <Variant id="default" name="Default" default="true" sort-id="1">
+            <ParameterReference ref="filterColor">#FFFFFF</ParameterReference>
+        </Variant>
+    </ScriptVariants>
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <ScriptVariants group-ref="lighting" script-ref="default">
+        <Variant id="darker" name="Darker">
+            <ParameterReference ref="factor">0.5</ParameterReference>
+        </Variant>
+        <Variant id="brighter" name="Brighter">
+            <ParameterReference ref="factor">2</ParameterReference>
+        </Variant>
+    </ScriptVariants>
+    <ScriptVariants group-ref="lighting" script-ref="calculated">
+        <Variant id="default" name="Default" default="true" sort-id="1">
+            <ParameterReference ref="brightFactor">2</ParameterReference>
+            <ParameterReference ref="darkFactor">0.5</ParameterReference>
+            <ParameterReference ref="calculation">mul</ParameterReference>
+        </Variant>
+    </ScriptVariants>
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <ScriptVariants group-ref="coloring" script-ref="overlay">
+        <Variant id="red" name="Red Overlay">
+            <ParameterReference ref="addColor">#FF0000</ParameterReference>
+            <ParameterReference ref="opacity">0.5</ParameterReference>
+        </Variant>
+        <Variant id="green" name="Green Overlay">
+            <ParameterReference ref="addColor">#00FF00</ParameterReference>
+            <ParameterReference ref="opacity">0.5</ParameterReference>
+        </Variant>
+        <Variant id="blue" name="Blue Overlay">
+            <ParameterReference ref="addColor">#0000FF</ParameterReference>
+            <ParameterReference ref="opacity">0.5</ParameterReference>
+        </Variant>
+        <Variant id="yellow" name="Yellow Overlay">
+            <ParameterReference ref="addColor">#FFFF00</ParameterReference>
+            <ParameterReference ref="opacity">0.5</ParameterReference>
+        </Variant>
+        <Variant id="magenta" name="Magenta Overlay">
+            <ParameterReference ref="addColor">#00FFFF</ParameterReference>
+            <ParameterReference ref="opacity">0.5</ParameterReference>
+        </Variant>
+        <Variant id="turkey" name="Turkey Overlay">
+            <ParameterReference ref="addColor">#FF00FF</ParameterReference>
+            <ParameterReference ref="opacity">0.5</ParameterReference>
+        </Variant>
+    </ScriptVariants>
+    <ScriptVariants group-ref="coloring" script-ref="replacement">
+        <Variant id="red.fs.blue" name="Red replaced with Blue">
+            <ParameterReference ref="sourceColor">#FF0000</ParameterReference>
+            <ParameterReference ref="targetColor">#0000FF</ParameterReference>
+            <ParameterReference ref="factor">0.5</ParameterReference>
+            <ParameterReference ref="smoothly">true</ParameterReference>
+        </Variant>
+        <Variant id="blue.fs.red" name="Blue replaced with Red">
+            <ParameterReference ref="sourceColor">#0000FF</ParameterReference>
+            <ParameterReference ref="targetColor">#FF0000</ParameterReference>
+            <ParameterReference ref="factor">0.5</ParameterReference>
+            <ParameterReference ref="smoothly">true</ParameterReference>
+        </Variant>
+    </ScriptVariants>
+    <ScriptVariants group-ref="coloring" script-ref="palette">
+        <Variant id="BGR" name="Blue-Green-Red">
+            <ParameterReference ref="palette">BGR</ParameterReference>
+        </Variant>
+        <Variant id="BRG" name="Blue-Red-Green">
+            <ParameterReference ref="palette">BRG</ParameterReference>
+        </Variant>
+        <Variant id="RBG" name="Red-Blue-Green">
+            <ParameterReference ref="palette">RBG</ParameterReference>
+        </Variant>
+        <Variant id="GBR" name="Green-Blue-Red">
+            <ParameterReference ref="palette">GBR</ParameterReference>
+        </Variant>
+        <Variant id="GRB" name="Green-Red-Blue">
+            <ParameterReference ref="palette">GRB</ParameterReference>
+        </Variant>
+    </ScriptVariants>
+    <ScriptVariants group-ref="coloring" script-ref="shifting">
+        <Variant id="red" name="Red">
+            <ParameterReference ref="shiftFactor">0.1</ParameterReference>
+            <ParameterReference ref="channelColor">#FF0000</ParameterReference>
+        </Variant>
+        <Variant id="green" name="Green">
+            <ParameterReference ref="shiftFactor">0.1</ParameterReference>
+            <ParameterReference ref="channelColor">#00FF00</ParameterReference>
+        </Variant>
+        <Variant id="blue" name="Blue">
+            <ParameterReference ref="shiftFactor">0.1</ParameterReference>
+            <ParameterReference ref="channelColor">#0000FF</ParameterReference>
+        </Variant>
+        <Variant id="yellow" name="Yellow">
+            <ParameterReference ref="shiftFactor">0.1</ParameterReference>
+            <ParameterReference ref="channelColor">#FFFF00</ParameterReference>
+        </Variant>
+        <Variant id="turkey" name="Turkey">
+            <ParameterReference ref="shiftFactor">0.1</ParameterReference>
+            <ParameterReference ref="channelColor">#FF00FF</ParameterReference>
+        </Variant>
+        <Variant id="magenta" name="Magenta">
+            <ParameterReference ref="shiftFactor">0.1</ParameterReference>
+            <ParameterReference ref="channelColor">#00FFFF</ParameterReference>
+        </Variant>
+    </ScriptVariants>
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <ScriptVariants group-ref="smoothly" script-ref="blur.default">
+        <Variant id="blur.small" name="Blue (Small)" sort-id="1" default="true">
+            <ParameterReference ref="factor">0.01</ParameterReference>
+            <ParameterReference ref="interpolator">0.35</ParameterReference>
+        </Variant>
+        <Variant id="blur.medium" name="Blue (Medium)" sort-id="2">
+            <ParameterReference ref="factor">0.01</ParameterReference>
+            <ParameterReference ref="interpolator">0.1</ParameterReference>
+        </Variant>
+        <Variant id="blur.hard" name="Blue (Hard)" sort-id="3">
+            <ParameterReference ref="factor">0.1</ParameterReference>
+            <ParameterReference ref="interpolator">0.35</ParameterReference>
+        </Variant>
+    </ScriptVariants>
+    <ScriptVariants group-ref="smoothly" script-ref="blur.zoom">
+        <Variant id="default" name="Default" default="true" sort-id="1">
+            <ParameterReference ref="center">0.5,0.5</ParameterReference>
+            <ParameterReference ref="blurAmount">-0.1</ParameterReference>
+            <ParameterReference ref="repeatCount">15</ParameterReference>
+            <ParameterReference ref="repeatMinus">0.0666</ParameterReference>
+        </Variant>
+        <Variant id="hard+" name="Hard (+)">
+            <ParameterReference ref="center">0.5,0.5</ParameterReference>
+            <ParameterReference ref="blurAmount">0.25</ParameterReference>
+            <ParameterReference ref="repeatCount">15</ParameterReference>
+            <ParameterReference ref="repeatMinus">0.0666</ParameterReference>
+        </Variant>
+        <Variant id="hard+" name="Hard (-)">
+            <ParameterReference ref="center">0.5,0.5</ParameterReference>
+            <ParameterReference ref="blurAmount">-0.25</ParameterReference>
+            <ParameterReference ref="repeatCount">15</ParameterReference>
+            <ParameterReference ref="repeatMinus">0.0666</ParameterReference>
+        </Variant>
+    </ScriptVariants>
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <ScriptVariants group-ref="border" script-ref="relief">
+        <Variant id="grayscale" name="Gray-Scale" sort-id="1">
+            <ParameterReference ref="size">0.01</ParameterReference>
+            <ParameterReference ref="interpolator">2.7</ParameterReference>
+            <ParameterReference ref="gray">true</ParameterReference>
+        </Variant>
+        <Variant id="colored" name="Colored" sort-id="2">
+            <ParameterReference ref="size">0.01</ParameterReference>
+            <ParameterReference ref="interpolator">2.7</ParameterReference>
+            <ParameterReference ref="gray">false</ParameterReference>
+        </Variant>
+    </ScriptVariants>
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <ScriptVariants group-ref="deformation" script-ref="pixeling">
+        <Variant id="pixeling.small" name="Pixeling (Small)" sort-id="1">
+            <ParameterReference ref="transX">0.01</ParameterReference>
+            <ParameterReference ref="transY">0.01</ParameterReference>
+        </Variant>
+        <Variant id="pixeling.medium" name="Pixeling (Medium)" sort-id="2">
+            <ParameterReference ref="transX">0.05</ParameterReference>
+            <ParameterReference ref="transY">0.05</ParameterReference>
+        </Variant>
+        <Variant id="pixeling.hard" name="Pixeling (Hard)" sort-id="3">
+            <ParameterReference ref="transX">0.1</ParameterReference>
+            <ParameterReference ref="transY">0.1</ParameterReference>
+        </Variant>
+    </ScriptVariants>
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <!-- *********************************** -->
+    <ScriptVariants group-ref="art" script-ref="toon">
+        <Variant id="toon.small" name="Toon Effect (Small)" sort-id="1" default="true">
+            <ParameterReference ref="factor">10</ParameterReference>
+        </Variant>
+        <Variant id="toon.medium" name="Toon Effect (Medium)" sort-id="2">
+            <ParameterReference ref="factor">5</ParameterReference>
+        </Variant>
+        <Variant id="toon.hard" name="Toon Effect (Hard)" sort-id="3">
+            <ParameterReference ref="factor">3</ParameterReference>
+        </Variant>
+    </ScriptVariants>
+</var:Variants>

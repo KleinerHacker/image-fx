@@ -1,0 +1,16 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:fxr="http://www.pcsoft.de/image.fx/renderers"
+           xmlns:fxs="http://www.pcsoft.de/image.fx/scripting"
+           targetNamespace="http://www.pcsoft.de/image.fx/renderers">
+
+    <xs:import namespace="http://www.pcsoft.de/image.fx/scripting" schemaLocation="scripting.xsd"/>
+
+    <xs:element name="Renderers">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="fxs:XScriptGroupList"/>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

@@ -1,0 +1,31 @@
+<fxm:Stamps xmlns:fxm="http://www.pcsoft.de/image.fx/stamps">
+    <StampGroup id="forms" name="Forms">
+        <Stamp id="puzzle" name="Puzzle">
+            <StampContent>
+                <Resource>stamps/forms/puzzle.png</Resource>
+            </StampContent>
+        </Stamp>
+        <Stamp id="bone" name="Bone">
+            <StampContent>
+                <Resource>stamps/forms/bone.png</Resource>
+            </StampContent>
+        </Stamp>
+    </StampGroup>
+    <StampGroup id="animals" name="Animals">
+        <Stamp id="rabbit" name="Rabbit">
+            <StampContent>
+                <Resource>stamps/animals/rabbit.png</Resource>
+            </StampContent>
+        </Stamp>
+        <Stamp id="fish" name="Fish">
+            <StampContent>
+                <Resource>stamps/animals/fish.png</Resource>
+            </StampContent>
+        </Stamp>
+        <Stamp id="dog" name="Dog">
+            <StampContent>
+                <Resource>stamps/animals/dog.png</Resource>
+            </StampContent>
+        </Stamp>
+    </StampGroup>
+</fxm:Stamps>

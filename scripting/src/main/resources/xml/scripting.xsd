@@ -1,0 +1,205 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:fxs="http://www.pcsoft.de/image.fx/scripting"
+           targetNamespace="http://www.pcsoft.de/image.fx/scripting">
+
+    <xs:complexType name="XParameterDefinition" abstract="true">
+        <xs:attribute name="id" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Identifier for usage in code and references in variant block
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Name for this variable in UI
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="XStringParameterValue">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="name" type="xs:string" use="required">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Name for this value shown in UI. Content is concrete value for code.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="XStringParameterPresentationType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="ComboBox"/>
+            <xs:enumeration value="ListBox"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="XStringParameterDefinition">
+        <xs:complexContent>
+            <xs:extension base="fxs:XParameterDefinition">
+                <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                    <xs:element name="Value" type="fxs:XStringParameterValue"/>
+                </xs:sequence>
+                <xs:attribute name="presentation" type="fxs:XStringParameterPresentationType" use="optional"
+                              default="ComboBox"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:simpleType name="XIntegerParameterPresentationType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="TextField"/>
+            <xs:enumeration value="Slider"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="XIntegerParameterDefinition">
+        <xs:complexContent>
+            <xs:extension base="fxs:XParameterDefinition">
+                <xs:attribute name="min" type="xs:int" use="optional" default="0"/>
+                <xs:attribute name="max" type="xs:int" use="required"/>
+                <xs:attribute name="presentation" type="fxs:XIntegerParameterPresentationType" use="optional"
+                              default="Slider"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:simpleType name="XDoubleParameterPresentationType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="TextField"/>
+            <xs:enumeration value="Slider"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="XDoubleParameterDefinition">
+        <xs:complexContent>
+            <xs:extension base="fxs:XParameterDefinition">
+                <xs:attribute name="min" type="xs:double" use="optional" default="0"/>
+                <xs:attribute name="max" type="xs:double" use="required"/>
+                <xs:attribute name="presentation" type="fxs:XDoubleParameterPresentationType" use="optional"
+                              default="Slider"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="XBooleanParameterPresentationCheckBox"/>
+
+    <xs:complexType name="XBooleanParameterPresentationRadioButton">
+        <xs:attribute name="on-text" type="xs:string" use="required"/>
+        <xs:attribute name="off-text" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="XBooleanParameterDefinition">
+        <xs:complexContent>
+            <xs:extension base="fxs:XParameterDefinition">
+                <xs:choice minOccurs="0" maxOccurs="1">
+                    <xs:element name="PresentationCheckBox" type="fxs:XBooleanParameterPresentationCheckBox"/>
+                    <xs:element name="PresentationRadioButton" type="fxs:XBooleanParameterPresentationRadioButton"/>
+                </xs:choice>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:simpleType name="XColorParameterPresentationType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="ComboBox"/>
+            <xs:enumeration value="Button"/>
+            <xs:enumeration value="ColorPicker"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="XColorParameterDefinition">
+        <xs:complexContent>
+            <xs:extension base="fxs:XParameterDefinition">
+                <xs:attribute name="presentation" type="fxs:XColorParameterPresentationType" use="optional"
+                              default="ComboBox"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:simpleType name="XImagePositionParameterPresentationType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Slider"/>
+            <xs:enumeration value="ImageClick"/>
+            <xs:enumeration value="TextField"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="XImagePositionParameterDefinition">
+        <xs:complexContent>
+            <xs:extension base="fxs:XParameterDefinition">
+                <xs:attribute name="presentation" type="fxs:XImagePositionParameterPresentationType" use="optional"
+                              default="ImageClick"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="XParameterGroup">
+        <xs:complexContent>
+            <xs:extension base="fxs:XScriptParameterDefinition">
+                <xs:attribute name="id" type="xs:string" use="required"/>
+                <xs:attribute name="name" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="XScriptParameterDefinition">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="ParameterDefinition" type="fxs:XParameterDefinition" minOccurs="0"/>
+            <xs:element name="ParameterGroup" type="fxs:XParameterGroup" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="XJavaScriptFile">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="encoding" type="xs:string" use="optional" default="UTF-8"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="XScript">
+        <xs:all>
+            <xs:element name="ScriptParameterDefinition" type="fxs:XScriptParameterDefinition" minOccurs="0"
+                        maxOccurs="1"/>
+            <xs:element name="Script">
+                <xs:complexType>
+                    <xs:choice>
+                        <xs:element name="JavaScript" type="xs:string"/>
+                        <xs:element name="JavaScriptFile" type="fxs:XJavaScriptFile">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    Relative path to the XML file place
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+        </xs:all>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="graphic" type="xs:base64Binary" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="XScriptGroup">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="ScriptElement" type="fxs:XScript"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="graphic" type="xs:base64Binary" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="XScriptGroupList">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="ScriptGroup" type="fxs:XScriptGroup"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

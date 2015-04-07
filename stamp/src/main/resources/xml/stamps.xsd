@@ -1,0 +1,37 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:fxs="http://www.pcsoft.de/image.fx/stamps"
+           targetNamespace="http://www.pcsoft.de/image.fx/stamps">
+
+    <xs:complexType name="XStampContent">
+        <xs:choice>
+            <xs:element name="B64" type="xs:base64Binary"/>
+            <xs:element name="Hex" type="xs:hexBinary"/>
+            <xs:element name="Resource" type="xs:string"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="XStamp">
+        <xs:all>
+            <xs:element name="StampContent" type="fxs:XStampContent"/>
+        </xs:all>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="XStampGroup">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="Stamp" type="fxs:XStamp"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="XStamps">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="StampGroup" type="fxs:XStampGroup"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="Stamps" type="fxs:XStamps"/>
+
+</xs:schema>

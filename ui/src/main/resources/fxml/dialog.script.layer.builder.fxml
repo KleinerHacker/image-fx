@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="800.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pcsoft.tools.image_fx.ui.dialogs.controller.ScriptLayerBuilderDialogController">
+   <children>
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+         <bottom>
+            <VBox>
+               <children>
+                  <Separator>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Separator>
+               </children>
+            </VBox>
+         </bottom>
+         <left>
+            <HBox>
+               <children>
+                  <ListView fx:id="lstScripts" cache="true" prefWidth="350.0" BorderPane.alignment="CENTER">
+                     <HBox.margin>
+                        <Insets bottom="5.0" right="5.0" />
+                     </HBox.margin>
+                  </ListView>
+                  <VBox>
+                     <children>
+                        <Button fx:id="btnAddScript" mnemonicParsing="false" onAction="#onActionAddScript" prefHeight="32.0" prefWidth="32.0">
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="icons/add16.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btnRemoveScript" mnemonicParsing="false" onAction="#onActionRemoveScript" prefHeight="32.0" prefWidth="32.0">
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="icons/remove16.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Separator>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Separator>
+                        <Button fx:id="btnUpScript" mnemonicParsing="false" onAction="#onActionUpScript" prefHeight="32.0" prefWidth="32.0">
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="icons/up16.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btnDownScript" mnemonicParsing="false" onAction="#onActionDownScript" prefHeight="32.0" prefWidth="32.0">
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="icons/down16.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+         </left>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" text="Settings" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" />
+                     </VBox.margin>
+                     <content>
+                        <VBox>
+                           <children>
+                              <Accordion fx:id="accScriptSettings" maxHeight="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </Accordion>
+                              <TitledPane fx:id="tpMask" animated="false" collapsible="false" prefHeight="200.0" text="Mask">
+                                 <content>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <ImageView fx:id="imgMask" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                          <VBox maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Button fx:id="btnLoadMaskFromHeightMap" maxWidth="1.7976931348623157E308" onAction="#onActionLoadMaskFromHeightMap" text="_Load Mask from Height-Map...">
+                                                   <VBox.margin>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button fx:id="btnClearMask" disable="true" maxWidth="1.7976931348623157E308" onAction="#onActionClearMask" text="_Clear Mask">
+                                                   <VBox.margin>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </content>
+                              </TitledPane>
+                              <TitledPane fx:id="tpOpacity" animated="false" collapsible="false" text="Opacity">
+                                 <content>
+                                    <HBox>
+                                       <children>
+                                          <Slider fx:id="sldOpacity" max="1.0" maxWidth="1.7976931348623157E308" value="1.0" HBox.hgrow="ALWAYS" />
+                                       </children>
+                                    </HBox>
+                                 </content>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </TitledPane>
+                           </children>
+                        </VBox>
+                     </content>
+                  </TitledPane>
+                  <TitledPane animated="false" collapsible="false" text="Preview">
+                     <content>
+                        <HBox>
+                           <children>
+                              <ImageView fx:id="imgPreview" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </HBox>
+                     </content>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </TitledPane>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+      <Pane fx:id="pnlWait" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.0" style="-fx-background-color: rgba(0,0,0,0.3);" visible="false">
+         <children>
+            <ProgressIndicator layoutX="462.0" layoutY="350.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0">
+               <StackPane.margin>
+                  <Insets />
+               </StackPane.margin>
+            </ProgressIndicator>
+         </children>
+      </Pane>
+   </children>
+</StackPane>

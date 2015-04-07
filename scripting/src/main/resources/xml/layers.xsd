@@ -1,0 +1,58 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:lay="http://www.pcsoft.de/image.fx/layers"
+           xmlns:var="http://www.pcsoft.de/image.fx/variants"
+           targetNamespace="http://www.pcsoft.de/image.fx/layers">
+
+    <xs:import namespace="http://www.pcsoft.de/image.fx/variants" schemaLocation="variants.xsd"/>
+
+    <xs:simpleType name="XOpacity">
+        <xs:restriction base="xs:double">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="XScriptType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Effect"/>
+            <xs:enumeration value="Renderer"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="XScriptElement">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="ParameterReference" type="var:XParameterReference"/>
+        </xs:sequence>
+        <xs:attribute name="script-ref" type="xs:string" use="required"/>
+        <xs:attribute name="group-ref" type="xs:string" use="required"/>
+        <xs:attribute name="type" type="lay:XScriptType" use="required"/>
+        <xs:attribute name="mask" type="xs:base64Binary" use="optional"/>
+        <xs:attribute name="opacity" type="lay:XOpacity" use="optional" default="1"/>
+    </xs:complexType>
+
+    <xs:complexType name="XLayer">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="ScriptElement" type="lay:XScriptElement"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="XLayerGroup">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="Layer" type="lay:XLayer"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="graphic" type="xs:base64Binary" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="XLayers">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="LayerGroup" type="lay:XLayerGroup"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="Layers" type="lay:XLayers"/>
+
+</xs:schema>

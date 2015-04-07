@@ -1,0 +1,45 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:var="http://www.pcsoft.de/image.fx/variants"
+           targetNamespace="http://www.pcsoft.de/image.fx/variants">
+
+    <xs:complexType name="XParameterReference">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="ref" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="XVariant">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="ParameterReference" type="var:XParameterReference"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Name of variant in the UI
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="sort-id" type="xs:int" use="optional" default="999"/>
+        <xs:attribute name="default" type="xs:boolean" use="optional" default="false"/>
+    </xs:complexType>
+
+    <xs:complexType name="XScriptVariants">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="Variant" type="var:XVariant"/>
+        </xs:sequence>
+        <xs:attribute name="group-ref" type="xs:string" use="required"/>
+        <xs:attribute name="script-ref" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="XVariants">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="ScriptVariants" type="var:XScriptVariants"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="Variants" type="var:XVariants"/>
+
+</xs:schema>

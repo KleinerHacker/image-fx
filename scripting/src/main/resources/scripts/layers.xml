@@ -1,0 +1,12 @@
+<lay:Layers xmlns:lay="http://www.pcsoft.de/image.fx/layers">
+    <LayerGroup id="default" name="Default">
+        <Layer id="warm-gray" name="Warm Gray">
+            <ScriptElement script-ref="grayscale" group-ref="default" type="Effect">
+                <ParameterReference ref="filterColor">#FFFFFF</ParameterReference>
+            </ScriptElement>
+            <ScriptElement script-ref="toon" group-ref="art" type="Effect">
+                <ParameterReference ref="factor">10</ParameterReference>
+            </ScriptElement>
+        </Layer>
+    </LayerGroup>
+</lay:Layers>
