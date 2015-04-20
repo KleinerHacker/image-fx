@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import org.apache.commons.io.FilenameUtils;
 import org.controlsfx.dialog.Dialogs;
 import org.pcsoft.tools.image_fx.common.listeners.ProgressListener;
+import org.pcsoft.tools.image_fx.common.threads.DaemonThreadFactory;
 import org.pcsoft.tools.image_fx.core.configuration.ConfigurationManager;
 import org.pcsoft.tools.image_fx.scripting.threading.JavaScriptImageWriterTaskRunner;
 import org.pcsoft.tools.image_fx.scripting.types.image.ImageScriptElement;
@@ -195,7 +196,7 @@ public class MainWindowController extends AbstractController implements Initiali
 //        disableUIForPreviewUpdate();
         workerController.showWorker();
 
-        Executors.newCachedThreadPool().submit(() -> {
+        Executors.newCachedThreadPool(new DaemonThreadFactory("Image builder")).submit(() -> {
             //Synchrony call
             final WritableImage writableImage = JavaScriptImageWriterTaskRunner.runJavaScriptTask(
                     imgPicture.getImage(), imgMask.getImage(), sldOpacity.getValue(), scriptInfo, variantInfo, new ProgressListener() {
@@ -237,7 +238,7 @@ public class MainWindowController extends AbstractController implements Initiali
 //        disableUIForPreviewUpdate();
         workerController.showWorker();
 
-        Executors.newCachedThreadPool().submit(() -> {
+        Executors.newCachedThreadPool(new DaemonThreadFactory("Image builder")).submit(() -> {
             //Synchrony call
             Image image = JavaScriptImageWriterTaskRunner.runJavaScriptTask(imgPicture.getImage(), imgMask.getImage(), sldOpacity.getValue(), scriptLayer.getScriptHolderList(), new ProgressListener() {
                 @Override
@@ -336,7 +337,7 @@ public class MainWindowController extends AbstractController implements Initiali
 
 //        disableUIForPreviewUpdate();
 
-        Executors.newCachedThreadPool().submit(() -> {
+        Executors.newCachedThreadPool(new DaemonThreadFactory("Image loader")).submit(() -> {
             final Image image;
             try {
                 image = listener.loadImage();

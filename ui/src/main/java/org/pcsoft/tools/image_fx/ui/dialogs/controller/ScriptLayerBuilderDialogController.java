@@ -26,6 +26,7 @@ import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.AbstractDialogAction;
 import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.Dialogs;
+import org.pcsoft.tools.image_fx.common.threads.DaemonThreadFactory;
 import org.pcsoft.tools.image_fx.core.threading.ImageWriterTaskRunner;
 import org.pcsoft.tools.image_fx.scripting.exceptions.ImageFXScriptParsingException;
 import org.pcsoft.tools.image_fx.scripting.threading.JavaScriptImageWriterTaskRunner;
@@ -232,7 +233,7 @@ public class ScriptLayerBuilderDialogController implements Initializable {
             try (final FileInputStream in = new FileInputStream(file)) {
                 final byte[] bytes = IOUtils.toByteArray(in);
 
-                Executors.newCachedThreadPool().submit(() -> {
+                Executors.newCachedThreadPool(new DaemonThreadFactory("Image builder")).submit(() -> {
                     final WritableImage image = ImageWriterTaskRunner.runMaskFromHeightMapTask(
                             new Image(new ByteArrayInputStream(bytes))
                     );

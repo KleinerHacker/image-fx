@@ -1,3 +1,4 @@
 .idea
 **/target/
 *.iml
+image_fx.log

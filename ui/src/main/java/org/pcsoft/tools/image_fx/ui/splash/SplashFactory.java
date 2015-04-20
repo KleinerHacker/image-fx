@@ -1,5 +1,6 @@
 package org.pcsoft.tools.image_fx.ui.splash;
 
+import org.pcsoft.tools.image_fx.common.threads.DaemonThreadFactory;
 import org.pcsoft.tools.image_fx.ui.splash.controllers.SplashController;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -45,7 +46,7 @@ public final class SplashFactory {
             final Scene scene = new Scene(pane);
             stage.setScene(scene);
 
-            Executors.newCachedThreadPool().submit(new FutureTask<Void>(task, null) {
+            Executors.newCachedThreadPool(new DaemonThreadFactory("startup")).submit(new FutureTask<Void>(task, null) {
                 @Override
                 protected void done() {
                     super.done();

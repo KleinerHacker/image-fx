@@ -5,6 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import org.pcsoft.tools.image_fx.common.listeners.ProgressListener;
+import org.pcsoft.tools.image_fx.common.threads.DaemonThreadFactory;
 import org.pcsoft.tools.image_fx.scripting.XmlEffectScriptManager;
 import org.pcsoft.tools.image_fx.scripting.XmlRendererScriptManager;
 import org.pcsoft.tools.image_fx.scripting.XmlScriptLayerManager;
@@ -38,7 +39,7 @@ public final class MainWindowUIBuilder {
         rendererAccordion.setDisable(true);
         layerAccordion.setDisable(true);
 
-        Executors.newCachedThreadPool().submit(() -> {
+        Executors.newCachedThreadPool(new DaemonThreadFactory("Preview builder")).submit(() -> {
             try {
                 XmlScriptPreviewManager.updateAllPreviewsFromImage(new Image(Thread.currentThread().getContextClassLoader().getResourceAsStream("images/example.png")), new ProgressListener() {
                     @Override

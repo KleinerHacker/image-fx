@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
 import org.pcsoft.tools.image_fx.common.listeners.ProgressListener;
+import org.pcsoft.tools.image_fx.common.threads.DaemonThreadFactory;
 import org.pcsoft.tools.image_fx.scripting.types.image.AbstractImageScript;
 import org.pcsoft.tools.image_fx.ui.Constants;
 import org.pcsoft.tools.image_fx.ui.components.ImagePreviewFactory;
@@ -94,7 +95,7 @@ public final class XmlScriptPreviewManager {
         imagePreviewMap.keySet().forEach(XmlScriptPreviewManager::showWaiterForPreview);
 
         try {
-            previewUpdateTask = Executors.newCachedThreadPool().submit(() -> {
+            previewUpdateTask = Executors.newCachedThreadPool(new DaemonThreadFactory("Preview updater")).submit(() -> {
                 final Future ownTask = previewUpdateTask;
 
                 int counter = 0;
