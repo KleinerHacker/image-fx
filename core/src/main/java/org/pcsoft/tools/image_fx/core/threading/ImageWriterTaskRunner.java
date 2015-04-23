@@ -27,6 +27,7 @@ import java.util.concurrent.ForkJoinPool;
 public final class ImageWriterTaskRunner {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ImageWriterTaskRunner.class);
+    public static final ForkJoinPool FORK_JOIN_POOL = new ForkJoinPool(Runtime.getRuntime().availableProcessors());
 
     public static WritableImage runImageBlackWhiteWriterTask(Image image, Image maskImage, double opacity) {
         LOGGER.debug("Run image black and white");
@@ -37,7 +38,7 @@ public final class ImageWriterTaskRunner {
 
         final ImageWriterTask task = new ImageBackWhiteWriterTask((int) image.getWidth(), (int) image.getHeight(),
                 pixelReader, pixelWriter, maskImage, opacity);
-        new ForkJoinPool(Runtime.getRuntime().availableProcessors()).invoke(task);
+        FORK_JOIN_POOL.execute(task);
 
         return writableImage;
     }
@@ -51,7 +52,7 @@ public final class ImageWriterTaskRunner {
 
         final ImageWriterTask task = new ImageGrayscaleWriterTask((int) image.getWidth(), (int) image.getHeight(),
                 pixelReader, pixelWriter, maskImage, opacity);
-        new ForkJoinPool(Runtime.getRuntime().availableProcessors()).invoke(task);
+        FORK_JOIN_POOL.execute(task);
 
         return writableImage;
     }
@@ -65,7 +66,7 @@ public final class ImageWriterTaskRunner {
 
         final ImageWriterTask task = new ImageInvertWriterTask((int) image.getWidth(), (int) image.getHeight(),
                 pixelReader, pixelWriter, maskImage, opacity);
-        new ForkJoinPool(Runtime.getRuntime().availableProcessors()).invoke(task);
+        FORK_JOIN_POOL.execute(task);
 
         return writableImage;
     }
@@ -79,7 +80,7 @@ public final class ImageWriterTaskRunner {
 
         final ImageWriterTask task = new ImageRotateWriterTask((int) image.getWidth(), (int) image.getHeight(),
                 pixelReader, pixelWriter, maskImage, opacity, rotation);
-        new ForkJoinPool(Runtime.getRuntime().availableProcessors()).invoke(task);
+        FORK_JOIN_POOL.execute(task);
 
         return writableImage;
     }
@@ -93,7 +94,7 @@ public final class ImageWriterTaskRunner {
 
         final ImageWriterTask task = new ImageMirrorWriterTask((int) image.getWidth(), (int) image.getHeight(),
                 pixelReader, pixelWriter, maskImage, opacity, orientation);
-        new ForkJoinPool(Runtime.getRuntime().availableProcessors()).invoke(task);
+        FORK_JOIN_POOL.execute(task);
 
         return writableImage;
     }
@@ -107,7 +108,7 @@ public final class ImageWriterTaskRunner {
 
         final ImageWriterTask task = new MaskBlurWriterTask((int) image.getWidth(), (int) image.getHeight(),
                 pixelReader, pixelWriter, ConfigurationManager.APP.getMaskConfiguration().getColor());
-        new ForkJoinPool(Runtime.getRuntime().availableProcessors()).invoke(task);
+        FORK_JOIN_POOL.execute(task);
 
         return writableImage;
     }
@@ -121,7 +122,7 @@ public final class ImageWriterTaskRunner {
 
         final ImageWriterTask task = new MaskToHeightMapWriterTask((int) image.getWidth(), (int) image.getHeight(),
                 pixelReader, pixelWriter);
-        new ForkJoinPool(Runtime.getRuntime().availableProcessors()).invoke(task);
+        FORK_JOIN_POOL.execute(task);
 
         return writableImage;
     }
@@ -135,7 +136,7 @@ public final class ImageWriterTaskRunner {
 
         final ImageWriterTask task = new MaskResetWriterTask((int) image.getWidth(), (int) image.getHeight(),
                 pixelReader, pixelWriter, ConfigurationManager.APP.getMaskConfiguration().getColor());
-        new ForkJoinPool(Runtime.getRuntime().availableProcessors()).invoke(task);
+        FORK_JOIN_POOL.execute(task);
 
         return writableImage;
     }
@@ -149,7 +150,7 @@ public final class ImageWriterTaskRunner {
 
         final ImageWriterTask task = new MaskFromHeightMapWriterTask((int) image.getWidth(), (int) image.getHeight(),
                 pixelReader, pixelWriter, ConfigurationManager.APP.getMaskConfiguration().getColor());
-        new ForkJoinPool(Runtime.getRuntime().availableProcessors()).invoke(task);
+        FORK_JOIN_POOL.execute(task);
 
         return writableImage;
     }
@@ -163,7 +164,7 @@ public final class ImageWriterTaskRunner {
 
         final ImageWriterTask task = new MaskInverterWriterTask((int) image.getWidth(), (int) image.getHeight(),
                 pixelReader, pixelWriter, ConfigurationManager.APP.getMaskConfiguration().getColor());
-        new ForkJoinPool(Runtime.getRuntime().availableProcessors()).invoke(task);
+        FORK_JOIN_POOL.execute(task);
 
         return writableImage;
     }
@@ -177,7 +178,7 @@ public final class ImageWriterTaskRunner {
 
         final ImageWriterTask task = new MaskSpectrumSplitterWriterTask((int) image.getWidth(), (int) image.getHeight(),
                 pixelReader, pixelWriter);
-        new ForkJoinPool(Runtime.getRuntime().availableProcessors()).invoke(task);
+        FORK_JOIN_POOL.execute(task);
 
         return writableImage;
     }
@@ -193,7 +194,7 @@ public final class ImageWriterTaskRunner {
 
         final ImageWriterTask task = new ImageMergingWriterTask((int) sourceImage.getWidth(), (int) sourceImage.getHeight(),
                 sourcePixelReader, pixelWriter, targetPixelReader, maskPixelReader, opacity);
-        new ForkJoinPool(Runtime.getRuntime().availableProcessors()).invoke(task);
+        FORK_JOIN_POOL.execute(task);
 
         return writableImage;
     }

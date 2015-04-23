@@ -46,6 +46,8 @@ public abstract class ImageWriterTask extends RecursiveTask<Void> {
 
     @Override
     protected Void compute() {
+        Thread.currentThread().setPriority(Thread.MIN_PRIORITY);
+
         if (!splitted) {
             onStartProgress();
 
